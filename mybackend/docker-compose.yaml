@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  fastapi-app:
+    build:
+      context: .
+    ports:
+      - "8000:80"
+    depends_on:
+      - mysql-db
+    env_file:
+      - .env.docker  # Menggunakan .env untuk lingkungan lokal
+      # - .env.docker  # Gunakan baris ini jika ingin mengaktifkan .env.docker untuk Docker
+    # environment:
+    #   - SQLALCHEMY_DATABASE_URL=mysql+pymysql://root:@127.0.0.1/mekar
+
+  mysql-db:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'mekar'
+      MYSQL_USER: 'root'
+      MYSQL_PASSWORD: ''
+      MYSQL_ROOT_PASSWORD: ''
+    ports:
+      - "3306:3306"
