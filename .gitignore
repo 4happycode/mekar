@@ -1,7 +1,8 @@
 # PYTHON
-env/
-.env
-*.pyc
+mybackend/env/
+mybackend/venv/
+mybackend/.env
+mybackend/*.pyc
 
 
 .DS_Store
